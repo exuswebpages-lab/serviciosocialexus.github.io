@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Labor en Curso - Extensión Universitaria de Soná</title>
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">
+        <img src="../../img/LogoUP.png" alt="Universidad de Panamá">
+      </div>
+      <div class="brand-text">
+        <strong>Universidad de Panamá</strong>
+        <span>Extensión Universitaria de Soná</span>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+      <ul id="navMenu">
+        <li><a href="../../index.html#inicio">Inicio</a></li>
+        <li><a href="../../index.html#en-curso">En curso</a></li>
+        <li><a href="../../index.html#realizadas">Realizadas</a></li>
+        <li><a href="../../index.html#recursos">Recursos</a></li>
+        <li><a href="../../index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="section-header">
+      <a href="../../index.html#en-curso" class="resource-link" style="display:inline-block; margin-bottom:15px;">← Volver a labores en curso</a>
+      <span class="tag tag-active" style="margin-bottom: 10px; display:inline-block;">En ejecución</span>
+      <h2>Nombre de la Labor en Curso</h2>
+      <p class="section-desc">Resumen detallado de los objetivos y avances del proyecto actual.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: start;">
+      <div>
+        <img src="../../img/salud-comunitaria.jpg" alt="Imagen del proyecto" style="width: 100%; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 4px 16px rgba(11, 61, 102, 0.08);">
+        
+        <h3 style="color: var(--blue-darkest); margin-bottom: 12px; font-size: 1.4rem;">Descripción del Proyecto</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.7;">
+          Detalla aquí los aspectos generales, población meta y el propósito de esta labor social en desarrollo.
+        </p>
+
+        <h3 style="color: var(--blue-darkest); margin-bottom: 12px; font-size: 1.4rem;">Metas y Objetivos</h3>
+        <ul style="color: var(--text-muted); margin-bottom: 25px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+          <li>Meta principal o servicio brindado a la comunidad.</li>
+          <li>Participación activa de los estudiantes de la extensión.</li>
+        </ul>
+      </div>
+
+      <aside style="background: var(--blue-pale); border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow);">
+        <h3 style="color: var(--blue-darkest); font-size: 1.2rem; margin-bottom: 16px; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Ficha Técnica</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem;">
+          <li><strong>Fecha de Inicio:</strong><br><span style="color: var(--text-muted);">Mes 2026</span></li>
+          <li><strong>Facultad Responsable:</strong><br><span style="color: var(--text-muted);">Nombre de la Facultad</span></li>
+          <li><strong>Estado:</strong><br><span style="color: #2e7d32; font-weight: 600;">En ejecución activa</span></li>
+        </ul>
+        <div style="margin-top: 25px;">
+          <a href="../../index.html#contacto" class="btn btn-primary" style="width: 100%; text-align: center; display: block;">Más información</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Extensión Universitaria de Soná - Universidad de Panamá.</p>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+</script>
+</body>
+</html>
