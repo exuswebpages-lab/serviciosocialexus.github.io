@@ -264,3 +264,69 @@ document.querySelectorAll('.exus-carousel').forEach(carrusel => {
 
     mostrarFoto(0);
 });
+
+
+/* ====================================================
+   CARRUSELES AUTOMÁTICOS EN PORTADAS DEL INDEX
+   Las fotografías rotan cada segundo sin afectar a
+   los carruseles manuales dentro de cada proyecto.
+==================================================== */
+(function iniciarPortadasAutomaticas() {
+    const tarjetas = document.querySelectorAll('.card-image-rotator[data-images]');
+
+    tarjetas.forEach(tarjeta => {
+        const rutas = tarjeta.dataset.images.split('|').map(r => r.trim()).filter(Boolean);
+        const frontal = tarjeta.querySelector('.card-image-front');
+        const trasera = tarjeta.querySelector('.card-image-back');
+        if (!frontal || !trasera || rutas.length < 2) return;
+
+        // No presentar archivos que no se hayan podido cargar.
+        const precargas = rutas.map((ruta, indice) => {
+            const imagen = new Image();
+            imagen.src = ruta;
+            const resultado = { ruta, lista: indice === 0 };
+            if (indice !== 0) {
+                imagen.addEventListener('load', () => { resultado.lista = true; });
+            }
+            return resultado;
+        });
+
+        let indiceActual = 0;
+        let mostrandoTrasera = false;
+        let enTransicion = false;
+
+        const cambiar = () => {
+            if (document.hidden || enTransicion) return;
+            let siguiente = indiceActual;
+            for (let i = 1; i < precargas.length; i++) {
+                const candidato = (indiceActual + i) % precargas.length;
+                if (precargas[candidato].lista) {
+                    siguiente = candidato;
+                    break;
+                }
+            }
+            if (siguiente === indiceActual) return;
+
+            enTransicion = true;
+            const destino = mostrandoTrasera ? frontal : trasera;
+            const nuevaRuta = precargas[siguiente].ruta;
+            const nuevoArchivo = new Image();
+            nuevoArchivo.onload = () => {
+                destino.src = nuevaRuta;
+                // Se alternan capas para un fundido continuo.
+                tarjeta.classList.toggle('show-back', !mostrandoTrasera);
+                mostrandoTrasera = !mostrandoTrasera;
+                indiceActual = siguiente;
+                window.setTimeout(() => { enTransicion = false; }, 370);
+            };
+            nuevoArchivo.onerror = () => {
+                precargas[siguiente].lista = false;
+                enTransicion = false;
+            };
+            nuevoArchivo.src = nuevaRuta;
+        };
+
+        window.setInterval(cambiar, 2000);
+    });
+})();
+
