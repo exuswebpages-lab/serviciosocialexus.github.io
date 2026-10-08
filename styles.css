@@ -887,3 +887,60 @@ a { text-decoration: none; color: inherit; }
 }
 
 }
+
+
+/* ==========================================
+   BOTÓN DE INSTAGRAM
+   EXTENSIÓN UNIVERSITARIA DE SONÁ
+========================================== */
+
+.btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: linear-gradient(
+        45deg,
+        #f58529,
+        #dd2a7b,
+        #8134af,
+        #515bd4
+    );
+
+    color: #ffffff;
+    align-self: flex-start;
+    border: 2px solid transparent;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-instagram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(221, 42, 123, 0.3);
+    color: #ffffff;
+}
+
+.btn-instagram svg {
+    flex-shrink: 0;
+}
+
+/* Instagram debajo del botón de WhatsApp */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+/* Adaptación para teléfonos */
+@media (max-width: 768px) {
+    .btn-instagram {
+        text-align: center;
+    }
+}
