@@ -944,3 +944,90 @@ a { text-decoration: none; color: inherit; }
         text-align: center;
     }
 }
+
+
+
+/* ==========================================
+   FONDO PRINCIPAL - FOTOGRAFÍA DE EXUS
+========================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    background-color: #0b3d66;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(11, 61, 102, 0.78) 0%,
+            rgba(11, 61, 102, 0.50) 50%,
+            rgba(11, 61, 102, 0.15) 100%
+        ),
+        url("./img/exus.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    border-radius: 0 0 18px 18px;
+}
+
+/* Título principal */
+
+.hero h1 {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* Descripción */
+
+.hero-text {
+    color: #ffffff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Texto Programa de Servicio Social */
+
+.hero .eyebrow {
+    color: #d9efff;
+}
+
+/* Recuadro de estadísticas */
+
+.hero-stats {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+   ADAPTACIÓN PARA CELULARES
+========================================== */
+
+@media (max-width: 768px) {
+
+    .hero {
+        background-image:
+            linear-gradient(
+                rgba(11, 61, 102, 0.72),
+                rgba(11, 61, 102, 0.66)
+            ),
+            url("./img/exus.png");
+
+        background-position: 60% center;
+    }
+
+    .hero h1 {
+        color: #ffffff;
+    }
+
+    .hero-text {
+        color: #ffffff;
+    }
+
+    .hero .eyebrow {
+        color: #d9efff;
+    }
+}
