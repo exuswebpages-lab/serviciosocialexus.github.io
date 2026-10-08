@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Robótica Educativa - Servicio Social 2026</title>
+
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        /* Imagen principal */
+
+        .banner-vertical {
+            width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            background: #f1f5f9;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(11,61,102,0.08);
+        }
+
+        .banner-wrapper {
+            margin-bottom: 25px;
+            background: #f1f5f9;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        /* Distribución del contenido */
+
+        .contenido-proyecto {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+            gap: 30px;
+            align-items: start;
+        }
+
+        .columna-principal {
+            min-width: 0;
+        }
+
+        /* Títulos internos */
+
+        .titulo-contenido {
+            color: var(--blue-darkest);
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .texto-proyecto {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .texto-proyecto.final {
+            margin-bottom: 25px;
+        }
+
+        .lista-proyecto {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* Video de Canva */
+
+        .canva-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            margin-top: 1.5em;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #000;
+            box-shadow: 0 4px 16px rgba(11,61,102,0.08);
+        }
+
+        .canva-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Ficha técnica */
+
+        .ficha-tecnica {
+            background: var(--blue-pale);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        .ficha-logo {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .ficha-logo img {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ficha-tecnica h3 {
+            color: var(--blue-darkest);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .ficha-lista {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 0.95rem;
+            padding: 0;
+        }
+
+        .ficha-lista span {
+            color: var(--text-muted);
+        }
+
+        /* Modal para ampliar imágenes */
+
+        #imageModal {
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            max-width: 92vw;
+            max-height: 92vh;
+            background: rgba(0,0,0,0.9);
+            box-shadow: 0 20px 25px rgba(0,0,0,0.5);
+            margin: auto;
+        }
+
+        #imageModal:not([open]) {
+            display: none;
+        }
+
+        #imageModal::backdrop {
+            background: rgba(0,0,0,0.8);
+        }
+
+        #imageModal img {
+            max-width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            display: block;
+            margin: 0 0 12px auto;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Adaptación a celulares */
+
+        @media (max-width: 768px) {
+            .contenido-proyecto {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            main .section {
+                padding: 20px 12px;
+            }
+
+            .titulo-contenido {
+                font-size: 1.25rem;
+            }
+
+            .canva-container {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <div class="brand">
+                <div class="brand-mark">
+                    <img src="../../img/LogoUP.png"
+                         alt="Universidad de Panamá">
+                </div>
+
+                <div class="brand-text">
+                    <strong>Universidad de Panamá</strong>
+                    <span>Extensión Universitaria de Soná</span>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <button class="nav-toggle"
+                        id="navToggle"
+                        type="button"
+                        aria-label="Abrir menú">
+                    ☰
+                </button>
+
+                <ul id="navMenu">
+                    <li><a href="../../index.html#inicio">Inicio</a></li>
+                    <li><a href="../../index.html#en-curso">En curso</a></li>
+                    <li><a href="../../index.html#realizadas">Realizadas</a></li>
+                    <li><a href="../../index.html#recursos">Recursos</a></li>
+                    <li><a href="../../index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <section class="section">
+
+            <!-- TÍTULO -->
+            <div class="section-header">
+
+                <a href="../../index.html#en-curso"
+                   class="resource-link"
+                   style="display:inline-block; margin-bottom:15px;">
+                    ← Volver a labores en curso
+                </a>
+
+                <br>
+
+                <span class="tag tag-active"
+                      style="display:inline-block; margin-bottom:10px;">
+                    En ejecución
+                </span>
+
+                <h2>Formación en Programación y Robótica Educativa</h2>
+
+                <p class="section-desc">
+                    Fortaleciendo las competencias tecnológicas
+                    de las comunidades de Soná mediante Scratch
+                    y LEGO Education WeDo 9585.
+                </p>
+
+            </div>
+
+            <!-- CONTENIDO EN COLUMNAS -->
+            <div class="contenido-proyecto">
+
+                <!-- COLUMNA PRINCIPAL -->
+                <div class="columna-principal">
+
+                    <!-- IMAGEN PRINCIPAL -->
+                    <div class="banner-wrapper">
+
+                        <img src="../../img/robotica1.jpg"
+                             alt="Banner principal de Robótica Educativa"
+                             class="banner-vertical">
+
+                    </div>
+
+                    <!-- DESCRIPCIÓN -->
+                    <h3 class="titulo-contenido">
+                        Descripción del Proyecto
+                    </h3>
+
+                    <p class="texto-proyecto">
+                        El proyecto de servicio social consiste en la
+                        implementación de un programa de formación
+                        en programación y robótica educativa,
+                        dirigido a estudiantes universitarios,
+                        jóvenes y adultos de las comunidades
+                        de Soná, provincia de Veraguas.
+                    </p>
+
+                    <p class="texto-proyecto">
+                        Los participantes adquieren conocimientos
+                        básicos de programación mediante Scratch,
+                        aprendiendo a utilizar secuencias, variables,
+                        condiciones y ciclos. Posteriormente,
+                        aplican estos conocimientos en actividades
+                        prácticas de robótica utilizando los kits
+                        LEGO Education WeDo 9585, que permiten
+                        construir y programar modelos mecánicos.
+                    </p>
+
+                    <p class="texto-proyecto final">
+                        El programa promueve el aprendizaje práctico,
+                        la creatividad, el trabajo colaborativo
+                        y la resolución de problemas. Además,
+                        permite a los estudiantes universitarios
+                        compartir sus conocimientos tecnológicos
+                        con la comunidad como parte de las
+                        130 horas de servicio social de la
+                        Universidad de Panamá.
+                    </p>
+
+                    <!-- TEMAS PRINCIPALES -->
+                    <h3 class="titulo-contenido">
+                        Temas Principales
+                    </h3>
+
+                    <ul class="lista-proyecto">
+                        <li>
+                            Introducción a la programación y
+                            al pensamiento computacional.
+                        </li>
+
+                        <li>
+                            Fundamentos de programación visual
+                            con Scratch: secuencias, variables,
+                            condiciones y ciclos.
+                        </li>
+
+                        <li>
+                            Introducción a la robótica educativa
+                            y reconocimiento de los componentes
+                            LEGO WeDo 9585.
+                        </li>
+
+                        <li>
+                            Construcción de modelos utilizando
+                            motores, engranajes, poleas
+                            y piezas mecánicas.
+                        </li>
+
+                        <li>
+                            Uso de sensores de distancia
+                            e inclinación en proyectos robóticos.
+                        </li>
+
+                        <li>
+                            Programación y automatización básica
+                            de modelos robóticos.
+                        </li>
+
+                        <li>
+                            Desarrollo de proyectos prácticos
+                            y resolución de problemas
+                            mediante robótica.
+                        </li>
+                    </ul>
+
+                    <!-- OBJETIVO -->
+                    <h3 class="titulo-contenido">
+                        Objetivo del Programa
+                    </h3>
+
+                    <p class="texto-proyecto final">
+                        Diseñar e implementar un curso de fundamentos
+                        de programación, robótica educativa
+                        y automatización básica utilizando Scratch
+                        y LEGO Education WeDo 9585, que permita
+                        a estudiantes universitarios y personas
+                        mayores de edad de las comunidades de Soná
+                        adquirir conocimientos fundamentales
+                        de programación, mecánica y automatización.
+                    </p>
+
+                    <!-- GALERÍA DE FOTOGRAFÍAS -->
+                    <h3 class="titulo-contenido">
+                        Galería de Imágenes (Haz clic para ampliar)
+                    </h3>
+
+                    <div class="exus-carousel"
+                         id="galeria-robotica"
+                         aria-label="Galería de Robótica Educativa">
+
+                        <div class="exus-carousel-images">
+
+                            <!-- FOTOGRAFÍA 1 -->
+                            <div class="exus-carousel-slide active">
+                                <img src="../../img/robotica1.jpg"
+                                     alt="Actividad de Robótica 1"
+                                     onclick="openModal(this.src)">
+                            </div>
+
+                            <!-- FOTOGRAFÍA 2 -->
+                            <div class="exus-carousel-slide">
+                                <img src="../../img/robotica2.jpg"
+                                     alt="Actividad de Robótica 2"
+                                     onclick="openModal(this.src)">
+                            </div>
+
+                            <!-- FOTOGRAFÍA 3 -->
+                            <div class="exus-carousel-slide">
+                                <img src="../../img/robotica3.jpg"
+                                     alt="Actividad de Robótica 3"
+                                     onclick="openModal(this.src)">
+                            </div>
+
+                            <!-- FOTOGRAFÍA 4 -->
+                            <div class="exus-carousel-slide">
+                                <img src="../../img/robotica4.jpg"
+                                     alt="Actividad de Robótica 4"
+                                     onclick="openModal(this.src)">
+                            </div>
+
+                            <!-- FOTOGRAFÍA 5 -->
+                            <div class="exus-carousel-slide">
+                                <img src="../../img/robotica5.jpg"
+                                     alt="Actividad de Robótica 5"
+                                     onclick="openModal(this.src)">
+                            </div>
+
+                        </div>
+
+                        <!-- BOTÓN ANTERIOR -->
+                        <button class="exus-carousel-prev"
+                                type="button"
+                                aria-label="Fotografía anterior">
+                            &#10094;
+                        </button>
+
+                        <!-- BOTÓN SIGUIENTE -->
+                        <button class="exus-carousel-next"
+                                type="button"
+                                aria-label="Fotografía siguiente">
+                            &#10095;
+                        </button>
+
+                        <!-- CONTADOR -->
+                        <div class="exus-carousel-counter"
+                             aria-live="polite">
+                            1 / 5
+                        </div>
+
+                    </div>
+
+                    <!-- INDICADORES -->
+                    <div class="exus-carousel-dots"></div>
+
+                    <!-- VIDEO DE CANVA -->
+                    <h3 class="titulo-contenido">
+                        Video del Proyecto de Robótica Educativa
+                    </h3>
+
+                    <p class="texto-proyecto">
+                        Conoce las actividades de formación en
+                        programación y robótica educativa
+                        desarrolladas mediante Scratch
+                        y LEGO Education WeDo 9585.
+                    </p>
+
+                    <div class="canva-container">
+
+                        <iframe
+                            loading="lazy"
+                            src="https://www.canva.com/design/DAHWH4y4cnA/HjLnixbcktHCUUn6SIjiWg/watch?embed"
+                            title="Video del Proyecto de Robótica Educativa"
+                            allowfullscreen
+                            allow="fullscreen; autoplay; encrypted-media">
+                        </iframe>
+
+                    </div>
+
+                </div>
+                <!-- FIN COLUMNA PRINCIPAL -->
+
+                <!-- FICHA TÉCNICA -->
+                <aside class="ficha-tecnica">
+
+                    <div class="ficha-logo">
+                        <img src="../../img/logo-infoplaza.jpg"
+                             alt="Logo Infoplazas AIP">
+                    </div>
+
+                    <h3>Ficha Técnica</h3>
+
+                    <ul class="ficha-lista">
+
+                        <li>
+                            <strong>Período:</strong>
+                            <br>
+                            <span>2026 - Duración de 4 meses</span>
+                        </li>
+
+                        <li>
+                            <strong>Duración:</strong>
+                            <br>
+                            <span>130 horas de servicio social</span>
+                        </li>
+
+                        <li>
+                            <strong>Población Meta:</strong>
+                            <br>
+                            <span>
+                                Estudiantes universitarios,
+                                jóvenes y adultos de Soná y San Pablo.
+                                Se estima beneficiar de 20 a 30 personas.
+                            </span>
+                        </li>
+
+                        <li>
+                            <strong>Sedes:</strong>
+                            <br>
+                            <span>
+                                • Infoplaza EXUS
+                                <br>
+                                • Infoplaza de San Pablo
+                            </span>
+                        </li>
+
+                        <li>
+                            <strong>Tutores Encargados:</strong>
+                            <br>
+                            <span>
+                                • Prof. Gloris Batista Mendoza de Cedeño
+                                <br>
+                                • Prof. Roxana del Carmen Cubilla de Araúz
+                            </span>
+                        </li>
+
+                        <li>
+                            <strong>Facultad:</strong>
+                            <br>
+                            <span>
+                                Facultad de Informática,
+                                Electrónica y Comunicación
+                            </span>
+                        </li>
+
+                        <li>
+                            <strong>Instituciones:</strong>
+                            <br>
+                            <span>
+                                Universidad de Panamá &amp; Infoplazas AIP
+                            </span>
+                        </li>
+
+                        <li>
+                            <strong>Estado:</strong>
+                            <br>
+                            <span style="color:#2e7d32; font-weight:600;">
+                                En ejecución activa
+                            </span>
+                        </li>
+
+                    </ul>
+
+                    <div style="margin-top:25px;">
+                        <a href="../../index.html#contacto"
+                           class="btn btn-primary"
+                           style="width:100%; text-align:center; display:block;">
+                            Contacto
+                        </a>
+                    </div>
+
+                </aside>
+
+            </div>
+            <!-- FIN CONTENIDO EN COLUMNAS -->
+
+        </section>
+
+    </main>
+
+    <!-- MODAL PARA AMPLIAR FOTOGRAFÍAS -->
+    <dialog id="imageModal">
+
+        <button class="close-modal"
+                type="button"
+                onclick="closeModal()">
+            Cerrar ✕
+        </button>
+
+        <img id="modalImage"
+             alt="Fotografía ampliada">
+
+    </dialog>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer">
+        <p>
+            &copy; 2026 Extensión Universitaria de Soná -
+            Universidad de Panamá.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT GENERAL -->
+    <script src="../../script.js"></script>
+
+    <!-- JAVASCRIPT DEL MODAL -->
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        function openModal(src) {
+            modalImage.src = src;
+
+            if (!modal.open) {
+                modal.showModal();
+            }
+        }
+
+        function closeModal() {
+            modal.close();
+        }
+
+        modal.addEventListener('click', event => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        modal.addEventListener('close', () => {
+            modalImage.removeAttribute('src');
+        });
+    </script>
+
+</body>
+</html>

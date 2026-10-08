@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Marketing Digital - Servicio Social 2025</title>
+
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        /* ==========================================
+           IMAGEN PRINCIPAL
+        ========================================== */
+
+        .banner-vertical {
+            width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+            background: #f1f5f9;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 16px rgba(11,61,102,0.08);
+            display: block;
+        }
+
+        /* ==========================================
+           DISTRIBUCIÓN DEL CONTENIDO
+        ========================================== */
+
+        .contenido-proyecto {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+            gap: 30px;
+            align-items: start;
+        }
+
+        .columna-principal {
+            min-width: 0;
+        }
+
+        /* ==========================================
+           TÍTULOS Y TEXTOS
+        ========================================== */
+
+        .titulo-contenido {
+            color: var(--blue-darkest);
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .texto-proyecto {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .lista-proyecto {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* ==========================================
+           PRESENTACIÓN INTERACTIVA DE CANVA
+        ========================================== */
+
+        .canva-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            box-shadow: 0 4px 16px rgba(11,61,102,0.08);
+            margin-top: 1.5em;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #000;
+        }
+
+        .canva-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ==========================================
+           FICHA TÉCNICA
+        ========================================== */
+
+        .ficha-tecnica {
+            background: var(--blue-pale);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+
+        .ficha-logo {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .ficha-logo img {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ficha-tecnica h3 {
+            color: var(--blue-darkest);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .ficha-lista {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 0.95rem;
+            padding: 0;
+        }
+
+        .ficha-lista span {
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           MODAL PARA AMPLIAR FOTOGRAFÍAS
+        ========================================== */
+
+        #imageModal {
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            max-width: 92vw;
+            max-height: 92vh;
+            background: rgba(0,0,0,0.9);
+            box-shadow: 0 20px 25px rgba(0,0,0,0.5);
+            margin: auto;
+        }
+
+        #imageModal:not([open]) {
+            display: none;
+        }
+
+        #imageModal::backdrop {
+            background: rgba(0,0,0,0.8);
+        }
+
+        #imageModal img {
+            display: block;
+            max-width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 8px;
+            margin: auto;
+        }
+
+        .close-modal {
+            display: block;
+            margin: 0 0 12px auto;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* ==========================================
+           ADAPTACIÓN PARA CELULARES
+        ========================================== */
+
+        @media (max-width: 768px) {
+
+            .contenido-proyecto {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            main .section {
+                padding: 20px 12px;
+            }
+
+            .titulo-contenido {
+                font-size: 1.25rem;
+            }
+
+            .canva-container {
+                height: 320px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    <img src="../../img/LogoUP.png"
+                         alt="Universidad de Panamá">
+                </div>
+
+                <div class="brand-text">
+                    <strong>Universidad de Panamá</strong>
+                    <span>Extensión Universitaria de Soná</span>
+                </div>
+
+            </div>
+
+            <!-- MENÚ -->
+            <nav class="main-nav">
+
+                <button class="nav-toggle"
+                        id="navToggle"
+                        type="button"
+                        aria-label="Abrir menú">
+                    ☰
+                </button>
+
+                <ul id="navMenu">
+                    <li>
+                        <a href="../../index.html#inicio">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="../../index.html#en-curso">En curso</a>
+                    </li>
+                    <li>
+                        <a href="../../index.html#realizadas">Realizadas</a>
+                    </li>
+                    <li>
+                        <a href="../../index.html#recursos">Recursos</a>
+                    </li>
+                    <li>
+                        <a href="../../index.html#contacto">Contacto</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <section class="section">
+
+            <!-- ENCABEZADO DEL PROYECTO -->
+            <div class="section-header">
+
+                <a href="../../index.html#realizadas"
+                   class="resource-link"
+                   style="display:inline-block; margin-bottom:15px;">
+                    ← Volver al inicio
+                </a>
+
+                <br>
+
+                <span class="tag"
+                      style="display:inline-block; margin-bottom:10px;">
+                    Servicio Social 2025
+                </span>
+
+                <h2>
+                    Marketing Digital para Emprendedores
+                </h2>
+
+                <p class="section-desc">
+                    Impulsando el crecimiento comercial
+                    de los emprendedores locales a través
+                    de herramientas digitales.
+                </p>
+
+            </div>
+
+            <!-- CONTENIDO EN COLUMNAS -->
+            <div class="contenido-proyecto">
+
+                <!-- COLUMNA PRINCIPAL -->
+                <div class="columna-principal">
+
+                    <!-- IMAGEN PRINCIPAL -->
+                    <img src="../../img/marketing2.jpeg"
+                         alt="Marketing Digital"
+                         class="banner-vertical">
+
+                    <!-- DESCRIPCIÓN -->
+                    <h3 class="titulo-contenido">
+                        Descripción del Proyecto
+                    </h3>
+
+                    <p class="texto-proyecto">
+                        Proyecto dirigido a emprendedores locales
+                        interesados en mejorar la presencia
+                        y promoción de sus negocios mediante
+                        herramientas digitales, parte del programa
+                        de 130 horas de Servicio Social
+                        de la Universidad de Panamá.
+                    </p>
+
+                    <!-- TEMAS PRINCIPALES -->
+                    <h3 class="titulo-contenido">
+                        Temas Principales
+                    </h3>
+
+                    <ul class="lista-proyecto">
+
+                        <li>
+                            Publicidad en las redes sociales
+                            para tu negocio.
+                        </li>
+
+                        <li>
+                            Uso de redes sociales,
+                            Tik Tok, Instagram, X.
+                        </li>
+
+                        <li>
+                            Analizar estadísticas y alcance
+                            de las publicaciones.
+                        </li>
+
+                        <li>
+                            Asesoramiento personalizado
+                            y promoción efectiva de productos
+                            y servicios.
+                        </li>
+
+                    </ul>
+
+                    <!-- OBJETIVO -->
+                    <h3 class="titulo-contenido">
+                        Objetivo del Programa
+                    </h3>
+
+                    <p class="texto-proyecto">
+                        Ayudar a emprendedores locales
+                        a promocionar sus negocios mediante
+                        herramientas digitales, facilitando
+                        su inserción en el entorno tecnológico
+                        y económico actual.
+                    </p>
+
+                    <!-- ==================================
+                         GALERÍA DE IMÁGENES - CARRUSEL
+                    ================================== -->
+
+                    <h3 class="titulo-contenido">
+                        Galería de Imágenes (Haz clic para ampliar)
+                    </h3>
+
+                    <div class="exus-carousel"
+                         id="galeria-marketing-2025"
+                         aria-label="Galería de Marketing Digital 2025">
+
+                        <!-- CONTENEDOR DE FOTOGRAFÍAS -->
+                        <div class="exus-carousel-images">
+
+                            <!-- FOTOGRAFÍA 1 -->
+                            <div class="exus-carousel-slide active">
+
+                                <img
+                                    src="../../img/baner-marketing2025.jpeg"
+                                    alt="Banner de Marketing Digital 2025"
+                                    onclick="openModal(this.src)">
+
+                            </div>
+
+                            <!-- FOTOGRAFÍA 2 -->
+                            <div class="exus-carousel-slide">
+
+                                <img
+                                    src="../../img/marketing1.jpeg"
+                                    alt="Actividad de Marketing Digital 2025"
+                                    onclick="openModal(this.src)">
+
+                            </div>
+
+                        </div>
+
+                        <!-- BOTÓN ANTERIOR -->
+                        <button class="exus-carousel-prev"
+                                type="button"
+                                aria-label="Fotografía anterior">
+                            &#10094;
+                        </button>
+
+                        <!-- BOTÓN SIGUIENTE -->
+                        <button class="exus-carousel-next"
+                                type="button"
+                                aria-label="Fotografía siguiente">
+                            &#10095;
+                        </button>
+
+                        <!-- CONTADOR -->
+                        <div class="exus-carousel-counter"
+                             aria-live="polite">
+                            1 / 2
+                        </div>
+
+                    </div>
+
+                    <!-- INDICADORES -->
+                    <div class="exus-carousel-dots"></div>
+
+                    <!-- PRESENTACIÓN DE CANVA -->
+                    <h3 class="titulo-contenido">
+                        Presentación Interactiva
+                    </h3>
+
+                    <div class="canva-container">
+
+                        <iframe
+                            loading="lazy"
+                            src="https://www.canva.com/design/DAG5JjIxXfY/wzggqZKIwti8ZUpQcgWZfA/view?embed"
+                            title="Presentación de Marketing Digital 2025"
+                            allowfullscreen
+                            allow="fullscreen">
+                        </iframe>
+
+                    </div>
+
+                </div>
+                <!-- FIN COLUMNA PRINCIPAL -->
+
+                <!-- FICHA TÉCNICA -->
+                <aside class="ficha-tecnica">
+
+                    <div class="ficha-logo">
+
+                        <img src="../../img/logo-infoplaza.jpg"
+                             alt="Logo Infoplazas AIP">
+
+                    </div>
+
+                    <h3>Ficha Técnica</h3>
+
+                    <ul class="ficha-lista">
+
+                        <li>
+                            <strong>Período:</strong>
+                            <br>
+                            <span>25 Abril - 21 Nov 2025</span>
+                        </li>
+
+                        <li>
+                            <strong>Población Meta:</strong>
+                            <br>
+                            <span>Emprendedores locales</span>
+                        </li>
+
+                        <li>
+                            <strong>Tutores Encargados:</strong>
+                            <br>
+                            <span>
+                                • Prof. Lorenzo Caballero
+                                <br>
+                                • Prof. Johana Castillo
+                                <br>
+                                • Prof. Gloris Batista Mendoza
+                                <br>
+                                • Prof. Lesdiel Pinzón
+                            </span>
+                        </li>
+
+                        <li>
+                            <strong>Instituciones:</strong>
+                            <br>
+                            <span>
+                                Universidad de Panamá &amp; Infoplazas AIP
+                            </span>
+                        </li>
+
+                    </ul>
+
+                    <!-- CONTACTO -->
+                    <div style="margin-top:25px;">
+
+                        <a href="../../index.html#contacto"
+                           class="btn btn-primary"
+                           style="width:100%; text-align:center; display:block;">
+                            Contacto
+                        </a>
+
+                    </div>
+
+                </aside>
+                <!-- FIN FICHA TÉCNICA -->
+
+            </div>
+            <!-- FIN CONTENIDO EN COLUMNAS -->
+
+        </section>
+
+    </main>
+
+    <!-- MODAL PARA AMPLIAR FOTOGRAFÍAS -->
+    <dialog id="imageModal">
+
+        <button class="close-modal"
+                type="button"
+                onclick="closeModal()">
+            Cerrar ✕
+        </button>
+
+        <img id="modalImage"
+             alt="Fotografía ampliada">
+
+    </dialog>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer">
+
+        <p>
+            &copy; 2026 Extensión Universitaria de Soná -
+            Universidad de Panamá.
+        </p>
+
+    </footer>
+
+    <!-- JAVASCRIPT PRINCIPAL -->
+    <script src="../../script.js"></script>
+
+    <!-- FUNCIONES DEL MODAL -->
+    <script>
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        function openModal(src) {
+
+            modalImage.src = src;
+
+            if (!modal.open) {
+                modal.showModal();
+            }
+
+        }
+
+        function closeModal() {
+            modal.close();
+        }
+
+        modal.addEventListener('click', event => {
+
+            if (event.target === modal) {
+                closeModal();
+            }
+
+        });
+
+        modal.addEventListener('close', () => {
+            modalImage.removeAttribute('src');
+        });
+
+    </script>
+
+</body>
+</html>
